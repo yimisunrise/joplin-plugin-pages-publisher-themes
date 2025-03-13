@@ -10,20 +10,33 @@
         <a href="/"><%= $site.siteName %></a>
       </nav>
       <div class="blogs-list-block">
-        <% const yearArticles = _.groupBy($site.articles, ({createdAt}) =>
-        moment(createdAt).year()); const years = Object.keys(yearArticles).sort().reverse(); for
-        (const year of years) { %>
-        <div class="annual-block">
-          <time class="annual-block-headline"><%= year %></time>
-          <ol>
-            <% for (const article of yearArticles[year]) { %>
-            <li>
-              <time datetime="<%= article.createdAt %>" class="annual-block-date">
-                <%= moment(article.createdAt).format($page.dateFormat) %>
-              </time>
-              <a class="annual-block-title" href="/<%= article.fullUrl %>">
-                <%= article.title %>
-              </a>
+        <% const groupedArticles = _.groupBy($site.articles, ({createdAt}) =>
+        moment(createdAt).format('YYYY-MM')); 
+        const groups = Object.keys(groupedArticles).sort().reverse(); 
+        for (const group of groups) { 
+          const [year, month] = group.split('-');
+        %>
+        <div class="timeline-block">
+          <time class="timeline-headline"><%= year %>年<%= month %>月</time>
+          <ol class="timeline-list">
+            <% for (const article of groupedArticles[group]) { %>
+            <li class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <time datetime="<%= article.createdAt %>" class="timeline-date">
+                  <%= moment(article.createdAt).format('MM-DD HH:mm') %>
+                </time>
+                <a class="timeline-title" href="/<%= article.fullUrl %>">
+                  <%= article.title %>
+                </a>
+                <% if (article.tags && article.tags.length > 0) { %>
+                  <div class="timeline-keywords">
+                    <% article.tags.forEach(tag => { %>
+                      <span class="keyword"><%= tag %></span>
+                    <% }) %>
+                  </div>
+                <% } %>
+              </div>
             </li>
             <% } %>
           </ol>
