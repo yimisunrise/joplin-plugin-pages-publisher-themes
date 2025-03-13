@@ -5,10 +5,20 @@
     <title>Archives - <%= $site.siteName %></title>
   </head>
   <body>
+    <header class="header">
+      <div class="header-content">
+        <div>
+          <a href="/" class="header-title"><%= $site.siteName %></a>
+          <div class="header-subtitle"><%= $page.subtitle %></div>
+        </div>
+        <nav class="header-nav">
+          <% for (const menuItem of $page.menu) {%>
+          <a href="<%= menuItem.link %>"><%= menuItem.label %></a>
+          <% } %>
+        </nav>
+      </div>
+    </header>
     <div class="main">
-      <nav class="navigation">
-        <a href="/"><%= $site.siteName %></a>
-      </nav>
       <div class="blogs-list-block">
         <% const groupedArticles = _.groupBy($site.articles, ({createdAt}) =>
         moment(createdAt).format('YYYY-MM')); 

@@ -5,10 +5,20 @@
     <title><%= $article.title %> - <%= $site.siteName %></title>
   </head>
   <body>
+    <header class="header">
+      <div class="header-content">
+        <div>
+          <a href="/" class="header-title"><%= $site.siteName %></a>
+          <div class="header-subtitle"><%= $page.subtitle %></div>
+        </div>
+        <nav class="header-nav">
+          <% for (const menuItem of $page.menu) {%>
+          <a href="<%= menuItem.link %>"><%= menuItem.label %></a>
+          <% } %>
+        </nav>
+      </div>
+    </header>
     <div class="main">
-      <nav class="navigation">
-        <a href="/"><%= $site.siteName %></a> / <a href="/archives">archives</a>
-      </nav>
       <article>
         <header>
           <h1 class="article-title"><%= $article.title %></h1>
@@ -16,12 +26,12 @@
             <div>
               <span
                 >Created At：<time datetime="<%- $article.createdAt %>"
-                  ><%= moment($article.createdAt).format($page.dateFormat) %></time
+                  ><%= moment($article.createdAt).format($site.dateFormat) %></time
                 ></span
               >
               <span
                 >Updated At：<time datetime="<%- $article.updatedAt %>"
-                  ><%= moment($article.updatedAt).format($page.dateFormat) %></time
+                  ><%= moment($article.updatedAt).format($site.dateFormat) %></time
                 ></span
               >
             </div>
