@@ -3,6 +3,7 @@
   <head>
     <%- include('./_blocks/head') %>
     <title><%= $article.title %> - <%= $site.siteName %></title>
+    <meta name="keywords" content="<%= $article.tags.join(',') %>">
   </head>
   <body>
     <header class="header">
@@ -37,7 +38,8 @@
             </div>
             <% if ($article.tags.length > 0) {%>
             <div>
-              Keywords: <% for (const tag of $article.tags) {%>
+              Keywords: 
+              <% for (const tag of $article.tags) {%>
               <span class="keyword"><%= tag %></span>
               <% } %>
             </div>
