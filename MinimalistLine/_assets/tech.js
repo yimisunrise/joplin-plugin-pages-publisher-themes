@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (isMobile()) return;
   const canvas = document.createElement('canvas');
   canvas.classList.add('tech-canvas');
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.zIndex = '9999';
+  canvas.style.pointerEvents = 'none';
   document.body.appendChild(canvas);
 
   const ctx = canvas.getContext('2d');
@@ -106,20 +111,20 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // 鼠标移动
-  canvas.addEventListener('mousemove', (e) => {
-    mouse.x = e.x;
-    mouse.y = e.y;
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
   });
 
   // 鼠标离开
-  canvas.addEventListener('mouseout', () => {
+  window.addEventListener('mouseout', () => {
     mouse.x = undefined;
     mouse.y = undefined;
   });
 
   // 点击事件
-  canvas.addEventListener('click', (e) => {
-    fibonacciExplosion(e.x, e.y);
+  window.addEventListener('click', (e) => {
+    fibonacciExplosion(e.clientX, e.clientY);
   });
 
   // 窗口大小调整
