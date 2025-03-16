@@ -1,0 +1,86 @@
+/* 科技感主题样式 */
+:root {
+  --tech-primary: #0077b6;
+  --tech-secondary: #00b4d8;
+  --tech-bg: linear-gradient(135deg, #f0f2f5, #caf0f8, #90e0ef);
+  --tech-glow: 0 0 10px rgba(0, 119, 182, 0.3), 0 0 20px rgba(0, 119, 182, 0.2);
+}
+
+body {
+  background: var(--tech-bg);
+  color: #333;
+  font-family: 'Orbitron', sans-serif;
+}
+
+h1, h2, h3 {
+  color: var(--tech-primary);
+  text-shadow: var(--tech-glow);
+}
+
+a {
+  color: var(--tech-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--tech-primary);
+  text-shadow: var(--tech-glow);
+}
+
+/* 按钮样式 */
+.button-tech {
+  background: transparent;
+  border: 2px solid var(--tech-primary);
+  color: var(--tech-primary);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-tech:hover {
+  background: var(--tech-primary);
+  color: white;
+  box-shadow: var(--tech-glow);
+}
+
+/* 加载动画 */
+@keyframes techPulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.loading-tech {
+  animation: techPulse 1.5s infinite;
+}
+
+/* 粒子背景效果 */
+.tech-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tech-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tech-secondary);
+}
