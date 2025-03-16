@@ -99,6 +99,17 @@
       "tip": "Site description displayed in meta tag"
     },
     {
+      "name": "backgroundStyle",
+      "label": "Background Style",
+      "inputType": "select",
+      "rules": [{ "required": true }],
+      "options": [
+        {"value": "tech", "label": "Tech"}, 
+        {"value": "particles", "label": "Particles"}
+      ],
+      "tip": "Background Style of your site"
+    },
+    {
       "name": "dateFormat",
       "label": "Date Format",
       "defaultValue": "YYYY-MM-DD HH:mm",
