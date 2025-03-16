@@ -83,23 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // 斐波那契动画
-  function fibonacciExplosion(x, y) {
-    const sequence = [0, 1];
-    for (let i = 2; i < 10; i++) {
-      sequence.push(sequence[i-1] + sequence[i-2]);
-    }
-
-    sequence.forEach((num, index) => {
-      setTimeout(() => {
-        ctx.fillStyle = `rgba(26, 115, 232, ${1 - index * 0.1})`;
-        ctx.beginPath();
-        ctx.arc(x, y, num * 2, 0, Math.PI * 2);
-        ctx.fill();
-      }, index * 50);
-    });
-  }
-
   // 动画循环
   function animate() {
     ctx.clearRect(0, 0, width, height);
@@ -120,11 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('mouseout', () => {
     mouse.x = undefined;
     mouse.y = undefined;
-  });
-
-  // 点击事件
-  window.addEventListener('click', (e) => {
-    fibonacciExplosion(e.clientX, e.clientY);
   });
 
   // 窗口大小调整
