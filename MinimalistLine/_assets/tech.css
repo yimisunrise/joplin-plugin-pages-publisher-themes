@@ -1,15 +1,16 @@
 /* 科技感主题样式 */
 :root {
-  --tech-primary: #0077b6;
-  --tech-secondary: #00b4d8;
-  --tech-bg: linear-gradient(135deg, #f0f2f5, #caf0f8, #90e0ef);
-  --tech-glow: 0 0 10px rgba(0, 119, 182, 0.3), 0 0 20px rgba(0, 119, 182, 0.2);
+  --tech-primary: #1a73e8;
+  --tech-secondary: #34a853;
+  --tech-bg: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6);
+  --tech-glow: 0 0 8px rgba(26, 115, 232, 0.2), 0 0 16px rgba(26, 115, 232, 0.15);
 }
 
 body {
   background: var(--tech-bg);
-  color: #333;
+  color: #212529;
   font-family: 'Orbitron', sans-serif;
+  line-height: 1.6;
 }
 
 h1, h2, h3 {
@@ -43,6 +44,8 @@ a:hover {
   background: var(--tech-primary);
   color: white;
   box-shadow: var(--tech-glow);
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
 }
 
 /* 加载动画 */
@@ -79,6 +82,7 @@ a:hover {
 ::-webkit-scrollbar-thumb {
   background: var(--tech-primary);
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
