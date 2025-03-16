@@ -1,90 +1,31 @@
-/* 科技感主题样式 */
-:root {
-  --tech-primary: #1a73e8;
-  --tech-secondary: #34a853;
-  --tech-bg: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6);
-  --tech-glow: 0 0 8px rgba(26, 115, 232, 0.2), 0 0 16px rgba(26, 115, 232, 0.15);
-}
-
-body {
-  background: var(--tech-bg);
-  color: #212529;
-  font-family: 'Orbitron', sans-serif;
-  line-height: 1.6;
-}
-
-h1, h2, h3 {
-  color: var(--tech-primary);
-  text-shadow: var(--tech-glow);
-}
-
-a {
-  color: var(--tech-secondary);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  color: var(--tech-primary);
-  text-shadow: var(--tech-glow);
-}
-
-/* 按钮样式 */
-.button-tech {
-  background: transparent;
-  border: 2px solid var(--tech-primary);
-  color: var(--tech-primary);
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.button-tech:hover {
-  background: var(--tech-primary);
-  color: white;
-  box-shadow: var(--tech-glow);
-  transform: translateY(-2px);
-  transition: all 0.2s ease;
-}
-
-/* 加载动画 */
-@keyframes techPulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
-
-.loading-tech {
-  animation: techPulse 1.5s infinite;
-}
-
-/* 粒子背景效果 */
 .tech-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
   pointer-events: none;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-/* 滚动条样式 */
-::-webkit-scrollbar {
-  width: 8px;
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.97) 0%,
+    rgba(245, 245, 245, 0.97) 100%
+  );
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--tech-primary);
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--tech-secondary);
+/* 移动端简化样式 */
+@media (max-width: 768px) {
+  .tech-canvas {
+    display: none;
+  }
+  
+  body {
+    background: #fafafa;
+  }
 }
