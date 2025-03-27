@@ -3,6 +3,7 @@
   <head>
     <%- include('./_blocks/head') %>
     <title><%= $article.title %> - <%= $site.siteName %></title>
+    <link rel="stylesheet" href="/_assets/viewerjs/viewer.min.css">
     <meta name="keywords" content="<%= $article.tags.join(',') %>">
   </head>
   <body>
@@ -49,5 +50,36 @@
         <div class="article-content markdown-body"><%- $article.htmlContent %></div>
       </article>
     </div>
+    <script src="/_assets/viewerjs/viewer.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.article-content img');
+        images.forEach(img => {
+          try {
+            new Viewer(img, {
+              inline: false,
+              button: true,
+              navbar: true,
+              title: false,
+              toolbar: {
+                zoomIn: true,
+                zoomOut: true,
+                oneToOne: true,
+                reset: true,
+                prev: true,
+                play: true,
+                next: true,
+                rotateLeft: true,
+                rotateRight: true,
+                flipHorizontal: true,
+                flipVertical: true,
+              }
+            });
+          } catch (e) {
+            console.error('Viewer initialization error:', e);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
